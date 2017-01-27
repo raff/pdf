@@ -446,6 +446,11 @@ type Value struct {
 	data interface{}
 }
 
+// Ref returns the object reference for this object.
+func (v Value) Ref() string {
+	return fmt.Sprintf("%d %d R", v.ptr.id, v.ptr.gen)
+}
+
 // IsNull reports whether the value is a null. It is equivalent to Kind() == Null.
 func (v Value) IsNull() bool {
 	return v.data == nil
